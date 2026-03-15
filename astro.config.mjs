@@ -6,9 +6,13 @@ import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
 
 export default defineConfig({
-  site: "https://nexa-automation.fr",
+  site: "https://digitizfr.github.io",
+  base: "/nexa-automation",
   output: "static",
   integrations: [sitemap(), react(), mdx(), icon()],
+  build: {
+    assets: "assets",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
