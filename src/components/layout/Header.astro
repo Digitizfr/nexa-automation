@@ -1,0 +1,110 @@
+---
+import Button from "../ui/Button.astro";
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.png";
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: "Accueil", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "À propos", href: "/a-propos" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-mystique/50" id="header">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 shrink-0">
+        <Image
+          src={logo}
+          alt="NEXA Automation"
+          width={180}
+          height={50}
+          class="h-12 w-auto"
+        />
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors duration-200 hover:text-emeraude ${
+              currentPath === item.href
+                ? "text-emeraude"
+                : "text-anchor/70"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Desktop -->
+      <div class="hidden lg:block">
+        <Button href="/contact" size="sm">Prendre RDV</Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="lg:hidden p-2 text-anchor hover:text-emeraude transition-colors"
+        id="mobile-menu-btn"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="lg:hidden hidden pb-6" id="mobile-menu">
+      <div class="flex flex-col gap-4 pt-4 border-t border-mystique/50">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-base font-medium py-2 transition-colors duration-200 hover:text-emeraude ${
+              currentPath === item.href
+                ? "text-emeraude"
+                : "text-anchor/70"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <Button href="/contact" size="sm" class="mt-2 w-full">Prendre RDV</Button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-20"></div>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+
+  btn?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    iconOpen?.classList.toggle("hidden", isOpen);
+    iconClose?.classList.toggle("hidden", !isOpen);
+    btn.setAttribute("aria-expanded", String(isOpen));
+  });
+</script>

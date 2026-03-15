@@ -1,0 +1,76 @@
+---
+import Button from "../ui/Button.astro";
+
+interface Props {
+  title: string;
+  highlight?: string;
+  subtitle: string;
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+}
+
+const { title, highlight, subtitle, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-mystique via-white to-arctique/10"></div>
+  <div class="absolute top-20 right-0 w-96 h-96 bg-emeraude/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-arctique/10 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emeraude/10 text-emeraude text-sm font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-emeraude animate-pulse"></span>
+        L'Intelligence en Action
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading leading-tight mb-6">
+        <Fragment set:html={title} />
+        {highlight && (
+          <span class="gradient-text block sm:inline"> {highlight}</span>
+        )}
+      </h1>
+
+      <p class="text-lg sm:text-xl text-anchor/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={ctaPrimary.href} size="lg">
+          {ctaPrimary.label}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Button>
+        {ctaSecondary && (
+          <Button href={ctaSecondary.href} variant="outline" size="lg">
+            {ctaSecondary.label}
+          </Button>
+        )}
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-anchor/40">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>+50 workflows automatisés</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>PME accompagnées</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>ROI mesurable garanti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

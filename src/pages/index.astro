@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import ProblemSolution from "../components/sections/ProblemSolution.astro";
+import ServicesPreview from "../components/sections/ServicesPreview.astro";
+import Stats from "../components/sections/Stats.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import CTA from "../components/sections/CTA.astro";
+
+const painPoints = [
+  {
+    icon: "clock",
+    problem: "Trop de tâches manuelles et répétitives",
+    solution: "Nous automatisons vos processus chronophages pour libérer vos équipes et leur permettre de se concentrer sur des tâches à forte valeur ajoutée.",
+  },
+  {
+    icon: "error",
+    problem: "Des erreurs humaines coûteuses",
+    solution: "Nos workflows automatisés éliminent les risques d'erreur dans la saisie de données, l'envoi de mails, la gestion de fichiers et bien plus.",
+  },
+  {
+    icon: "chart",
+    problem: "Des outils déconnectés qui freinent la croissance",
+    solution: "Nous connectons vos applications entre elles — CRM, ERP, e-commerce, comptabilité — pour créer un écosystème fluide et performant.",
+  },
+];
+
+const services = [
+  {
+    icon: "workflow",
+    title: "Automatisation de workflows",
+    description: "Création de workflows automatisés pour éliminer les tâches manuelles et accélérer vos processus métiers.",
+    tools: ["Make", "n8n", "Zapier"],
+  },
+  {
+    icon: "api",
+    title: "Intégration d'APIs",
+    description: "Connexion de vos outils et applications pour créer un écosystème unifié et sans friction.",
+    tools: ["REST API", "Webhooks", "OAuth"],
+  },
+  {
+    icon: "brain",
+    title: "Solutions IA",
+    description: "Intégration de l'intelligence artificielle dans vos processus pour automatiser l'analyse, la génération de contenu et la prise de décision.",
+    tools: ["ChatGPT", "Claude", "LLMs"],
+  },
+  {
+    icon: "search",
+    title: "Conseil & Audit",
+    description: "Analyse approfondie de vos processus actuels pour identifier les opportunités d'automatisation à fort impact.",
+    tools: ["Audit", "Stratégie", "Formation"],
+  },
+];
+
+const stats = [
+  { value: "50", suffix: "+", label: "Workflows automatisés" },
+  { value: "200", suffix: "h", label: "Économisées par mois" },
+  { value: "98", suffix: "%", label: "Taux de satisfaction" },
+  { value: "3", suffix: "x", label: "ROI moyen" },
+];
+
+const testimonials = [
+  {
+    quote: "NEXA a transformé notre façon de travailler. Ce qui nous prenait 4 heures par jour se fait maintenant automatiquement. Un vrai game-changer.",
+    author: "Marie Dupont",
+    role: "Directrice des opérations",
+    company: "TechVision SAS",
+  },
+  {
+    quote: "L'intégration de nos outils CRM avec notre plateforme e-commerce a été réalisée en quelques jours. Le résultat est impressionnant.",
+    author: "Thomas Martin",
+    role: "CEO",
+    company: "Commerce Plus",
+  },
+  {
+    quote: "Grâce aux solutions IA mises en place par NEXA, nous avons réduit de 70% le temps de traitement de nos demandes clients.",
+    author: "Sophie Laurent",
+    role: "Responsable Service Client",
+    company: "ServicePro",
+  },
+];
+---
+
+<BaseLayout
+  title="NEXA Automation — L'Intelligence en Action"
+  description="Agence d'automatisation spécialisée dans l'optimisation des processus métiers. Workflows automatisés, intégration d'APIs et solutions IA pour PME."
+>
+  <Hero
+    title="Transformez vos processus métiers avec"
+    highlight="l'automatisation intelligente"
+    subtitle="Nous concevons des workflows automatisés sur mesure qui éliminent les tâches répétitives, réduisent les erreurs et accélèrent votre croissance."
+    ctaPrimary={{ label: "Découvrir nos services", href: "/services" }}
+    ctaSecondary={{ label: "Prendre RDV", href: "/contact" }}
+  />
+
+  <ProblemSolution painPoints={painPoints} />
+
+  <ServicesPreview services={services} />
+
+  <Stats stats={stats} />
+
+  <Testimonials testimonials={testimonials} />
+
+  <CTA
+    title="Prêt à automatiser <br />votre entreprise ?"
+    subtitle="Discutons de vos besoins et découvrez comment NEXA peut transformer vos processus métiers."
+    ctaLabel="Prendre rendez-vous"
+    ctaHref="/contact"
+    secondaryLabel="Voir nos réalisations"
+    secondaryHref="/portfolio"
+  />
+</BaseLayout>

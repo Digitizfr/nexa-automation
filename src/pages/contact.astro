@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact — NEXA Automation"
+  description="Contactez NEXA Automation pour discuter de vos besoins en automatisation. Demandez un audit gratuit de vos processus métiers."
+>
+  <section class="relative overflow-hidden bg-gradient-to-br from-mystique via-white to-arctique/10 py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-emeraude/10 text-emeraude text-sm font-medium mb-6">
+          Contact
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading mb-6">
+          Parlons de votre <span class="gradient-text">projet</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-anchor/60">
+          Remplissez le formulaire ci-dessous et nous vous recontacterons sous 24h pour discuter de vos besoins en automatisation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <form class="space-y-6" action="#" method="POST">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-anchor mb-2">
+                  Nom complet <span class="text-emeraude">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-mystique focus:border-emeraude focus:ring-2 focus:ring-emeraude/20 outline-none transition-all text-anchor"
+                  placeholder="Votre nom"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-anchor mb-2">
+                  Email professionnel <span class="text-emeraude">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-mystique focus:border-emeraude focus:ring-2 focus:ring-emeraude/20 outline-none transition-all text-anchor"
+                  placeholder="vous@entreprise.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-medium text-anchor mb-2">
+                Entreprise
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full px-4 py-3 rounded-lg border border-mystique focus:border-emeraude focus:ring-2 focus:ring-emeraude/20 outline-none transition-all text-anchor"
+                placeholder="Nom de votre entreprise"
+              />
+            </div>
+
+            <div>
+              <label for="budget" class="block text-sm font-medium text-anchor mb-2">
+                Budget estimé
+              </label>
+              <select
+                id="budget"
+                name="budget"
+                class="w-full px-4 py-3 rounded-lg border border-mystique focus:border-emeraude focus:ring-2 focus:ring-emeraude/20 outline-none transition-all text-anchor bg-white"
+              >
+                <option value="">Sélectionnez une fourchette</option>
+                <option value="< 2000">Moins de 2 000 €</option>
+                <option value="2000-5000">2 000 € — 5 000 €</option>
+                <option value="5000-10000">5 000 € — 10 000 €</option>
+                <option value="> 10000">Plus de 10 000 €</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-anchor mb-2">
+                Décrivez votre projet <span class="text-emeraude">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-mystique focus:border-emeraude focus:ring-2 focus:ring-emeraude/20 outline-none transition-all text-anchor resize-vertical"
+                placeholder="Parlez-nous de vos processus à automatiser, de vos outils actuels et de vos objectifs..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full sm:w-auto gradient-bg text-white px-8 py-4 rounded-lg font-medium hover:opacity-90 hover:shadow-lg hover:shadow-emeraude/25 transition-all duration-300 cursor-pointer"
+            >
+              Envoyer ma demande
+              <svg class="w-5 h-5 ml-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-2">
+          <div class="bg-mystique/30 rounded-2xl p-8 sticky top-28">
+            <h3 class="text-xl font-heading mb-6 text-anchor">Autres moyens de nous joindre</h3>
+
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-emeraude/10 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-anchor text-sm">Email</p>
+                  <a href="mailto:contact@nexa-automation.fr" class="text-emeraude hover:text-sapphire transition-colors">
+                    contact@nexa-automation.fr
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-emeraude/10 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-anchor text-sm">Rendez-vous</p>
+                  <p class="text-anchor/60 text-sm">
+                    Réservez un créneau de 30 minutes pour discuter de votre projet.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-emeraude/10 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-emeraude" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-anchor text-sm">Réponse rapide</p>
+                  <p class="text-anchor/60 text-sm">
+                    Nous vous répondons sous 24 heures ouvrées.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-mystique">
+              <p class="text-sm text-anchor/50 leading-relaxed">
+                Toutes les informations transmises sont traitées de manière confidentielle et ne seront utilisées que dans le cadre de votre demande.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import CTA from "../components/sections/CTA.astro";
+
+const values = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
+    title: "Efficacité",
+    description: "Chaque solution est conçue pour maximiser l'impact et minimiser la complexité. Pas de superflu, que du résultat.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+    title: "Fiabilité",
+    description: "Nos automatisations sont robustes, testées et monitorées. Elles fonctionnent 24/7 sans intervention humaine.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />`,
+    title: "Proximité",
+    description: "Nous travaillons main dans la main avec vos équipes. Votre réussite est notre priorité, pas la technologie pour la technologie.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />`,
+    title: "Innovation",
+    description: "Nous restons à la pointe des technologies d'automatisation et d'IA pour vous offrir les solutions les plus performantes.",
+  },
+];
+---
+
+<BaseLayout
+  title="À propos — NEXA Automation"
+  description="Découvrez NEXA Automation, l'agence spécialisée dans l'automatisation des processus métiers. Notre mission, nos valeurs et notre approche."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-mystique via-white to-arctique/10 py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-emeraude/10 text-emeraude text-sm font-medium mb-6">
+          À propos
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading mb-6">
+          L'automatisation au service de <span class="gradient-text">votre croissance</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-anchor/60 leading-relaxed">
+          NEXA Automation est née d'un constat simple : les PME passent trop de temps sur des tâches répétitives qui pourraient être automatisées. Notre mission est de les libérer pour qu'elles puissent se concentrer sur ce qui compte vraiment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-heading mb-6">Notre histoire</h2>
+          <div class="space-y-4 text-anchor/70 leading-relaxed">
+            <p>
+              Fondée par des passionnés de technologie et d'optimisation des processus, NEXA Automation accompagne les PME françaises dans leur transformation digitale.
+            </p>
+            <p>
+              Notre expertise combine la maîtrise des outils d'automatisation no-code/low-code (Make, n8n, Zapier) avec une compréhension approfondie des enjeux business des entreprises. Cette double compétence nous permet de créer des solutions qui ne sont pas seulement techniques, mais véritablement adaptées aux besoins métiers.
+            </p>
+            <p>
+              Aujourd'hui, nous avons automatisé plus de 50 workflows pour des entreprises de toutes tailles, leur faisant gagner des centaines d'heures chaque mois.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-mystique to-arctique/20 rounded-3xl p-12 aspect-square flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-7xl font-heading gradient-text mb-4">N</div>
+            <p class="text-anchor/40 font-heading text-2xl">L'Intelligence en Action</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 sm:py-28 bg-mystique/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        badge="Nos valeurs"
+        title="Ce qui nous <span class='gradient-text'>guide</span>"
+        subtitle="Des principes qui orientent chaque projet et chaque décision."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {values.map((value) => (
+          <div class="bg-white rounded-2xl p-8 border border-mystique/50 hover:border-emeraude/30 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Fragment set:html={value.icon} />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-anchor mb-3">{value.title}</h3>
+            <p class="text-anchor/60 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        badge="Notre approche"
+        title="Agile, pragmatique et <span class='gradient-text'>orientée résultats</span>"
+      />
+
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-8">
+          {[
+            { title: "Écoute d'abord", desc: "Nous commençons toujours par comprendre votre activité, vos contraintes et vos objectifs avant de proposer une solution." },
+            { title: "Itération rapide", desc: "Nous livrons des résultats concrets dès les premières semaines, puis améliorons en continu selon vos retours." },
+            { title: "Transfert de compétences", desc: "Nous ne créons pas de dépendance. Nous formons vos équipes pour qu'elles puissent maintenir et faire évoluer les automatisations." },
+          ].map((item, index) => (
+            <div class="flex gap-6">
+              <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white font-semibold text-sm shrink-0">
+                {index + 1}
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-anchor mb-2">{item.title}</h3>
+                <p class="text-anchor/60 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Envie de travailler ensemble ?"
+    subtitle="Discutons de votre projet et découvrons ensemble comment l'automatisation peut transformer votre entreprise."
+    ctaLabel="Nous contacter"
+    ctaHref="/contact"
+  />
+</BaseLayout>

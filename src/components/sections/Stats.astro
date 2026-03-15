@@ -1,0 +1,33 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="py-20 sm:py-24 gradient-bg-dark relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-1/4 w-64 h-64 bg-emeraude/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-1/4 w-48 h-48 bg-arctique/10 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="text-4xl sm:text-5xl lg:text-6xl font-heading text-white mb-2">
+            {stat.value}
+            {stat.suffix && <span class="text-arctique">{stat.suffix}</span>}
+          </div>
+          <p class="text-white/60 text-sm sm:text-base">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

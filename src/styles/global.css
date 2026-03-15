@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "@fontsource-variable/montserrat";
+@import "@fontsource/poiret-one";
+
+@theme {
+  --color-anchor: #0A1628;
+  --color-anchor-light: #121E33;
+  --color-sapphire: #1B4F72;
+  --color-emeraude: #1A8CA8;
+  --color-arctique: #5BC0DE;
+  --color-mystique: #E8F0F8;
+  --color-white: #FFFFFF;
+
+  --font-heading: "Poiret One", serif;
+  --font-body: "Montserrat Variable", sans-serif;
+}
+
+@layer base {
+  :root {
+    --color-brand-primary: var(--color-sapphire);
+    --color-brand-secondary: var(--color-emeraude);
+    --color-brand-accent: var(--color-arctique);
+    --color-bg: var(--color-white);
+    --color-surface: var(--color-mystique);
+    --color-text: var(--color-anchor);
+    --color-text-muted: #4A5568;
+    --radius-base: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+  }
+
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-sapphire) 0%, var(--color-emeraude) 50%, var(--color-arctique) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--color-sapphire) 0%, var(--color-emeraude) 50%, var(--color-arctique) 100%);
+  }
+
+  .gradient-bg-dark {
+    background: linear-gradient(135deg, var(--color-anchor) 0%, var(--color-sapphire) 100%);
+  }
+}

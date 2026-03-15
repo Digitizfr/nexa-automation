@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+import CTA from "../../components/sections/CTA.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection("case-studies");
+  return caseStudies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+interface Props {
+  study: Awaited<ReturnType<typeof getCollection<"case-studies">>>[number];
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+---
+
+<BaseLayout
+  title={`${study.data.title} — NEXA Automation`}
+  description={study.data.description}
+>
+  <section class="py-20 sm:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back link -->
+      <a href="/portfolio" class="inline-flex items-center gap-2 text-sm text-emeraude hover:text-sapphire transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Retour au portfolio
+      </a>
+
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge variant="accent">{study.data.sector}</Badge>
+          <Badge variant="outline">{study.data.client}</Badge>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-6">{study.data.title}</h1>
+        <p class="text-lg text-anchor/60">{study.data.description}</p>
+      </header>
+
+      <!-- Results -->
+      <div class="bg-mystique/30 rounded-2xl p-8 mb-12">
+        <h2 class="text-lg font-semibold text-anchor mb-4">Résultats clés</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {study.data.results.map((result) => (
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-emeraude shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-anchor/70 text-sm">{result}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="flex flex-wrap gap-2 mb-12">
+        <span class="text-sm text-anchor/50 mr-2">Outils utilisés :</span>
+        {study.data.tools.map((tool) => (
+          <span class="px-3 py-1 text-sm bg-emeraude/10 text-emeraude rounded-full">{tool}</span>
+        ))}
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none prose-headings:font-heading prose-a:text-emeraude hover:prose-a:text-sapphire">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Un projet similaire ?"
+    subtitle="Nous pouvons reproduire ces résultats pour votre entreprise. Parlons-en."
+    ctaLabel="Discuter de mon projet"
+    ctaHref="/contact"
+  />
+</BaseLayout>

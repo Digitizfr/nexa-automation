@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  centered?: boolean;
+  class?: string;
+}
+
+const { title, subtitle, badge, centered = true, class: className = "" } = Astro.props;
+---
+
+<div class={`mb-12 sm:mb-16 ${centered ? "text-center" : ""} ${className}`}>
+  {badge && (
+    <span class="inline-block px-4 py-1.5 rounded-full bg-emeraude/10 text-emeraude text-sm font-medium mb-4">
+      {badge}
+    </span>
+  )}
+  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
+    <slot name="title">
+      <Fragment set:html={title} />
+    </slot>
+  </h2>
+  {subtitle && (
+    <p class="text-lg text-anchor/60 max-w-2xl mx-auto">
+      {subtitle}
+    </p>
+  )}
+</div>

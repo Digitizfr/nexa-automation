@@ -1,0 +1,30 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { formatDate } from "../utils/helpers";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author?: string;
+  ogImage?: string;
+}
+
+const { title, description, pubDate, author = "NEXA Automation", ogImage } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Blog NEXA Automation`} description={description} ogImage={ogImage}>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <header class="mb-12">
+      <p class="text-emeraude font-medium mb-4">
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        {author && <span> &middot; {author}</span>}
+      </p>
+      <h1 class="text-4xl sm:text-5xl font-heading mb-6">{title}</h1>
+      <p class="text-lg text-anchor/60">{description}</p>
+    </header>
+    <div class="prose prose-lg max-w-none prose-headings:font-heading prose-a:text-emeraude hover:prose-a:text-sapphire">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

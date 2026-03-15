@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import Button from "../components/ui/Button.astro";
+import CTA from "../components/sections/CTA.astro";
+
+interface ServiceDetail {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  benefits: string[];
+  tools: string[];
+}
+
+const services: ServiceDetail[] = [
+  {
+    id: "workflows",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />`,
+    title: "Automatisation de workflows",
+    description: "Nous concevons des workflows automatisés qui connectent vos outils et éliminent les tâches manuelles répétitives. Chaque workflow est construit sur mesure pour s'adapter parfaitement à vos processus existants.",
+    benefits: [
+      "Élimination des tâches manuelles et répétitives",
+      "Réduction des délais de traitement de 80%",
+      "Zéro erreur de saisie ou de transfert de données",
+      "Suivi et notifications en temps réel",
+    ],
+    tools: ["Make (Integromat)", "n8n", "Zapier", "Power Automate"],
+  },
+  {
+    id: "api",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />`,
+    title: "Intégration d'APIs",
+    description: "Connectez tous vos outils entre eux grâce à des intégrations API robustes et sécurisées. CRM, ERP, e-commerce, comptabilité — nous créons des ponts entre vos applications pour un flux de données sans friction.",
+    benefits: [
+      "Synchronisation en temps réel entre vos outils",
+      "Données centralisées et toujours à jour",
+      "Intégrations sur mesure avec vos APIs métier",
+      "Architecture scalable et maintenable",
+    ],
+    tools: ["REST APIs", "GraphQL", "Webhooks", "OAuth 2.0"],
+  },
+  {
+    id: "ia",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />`,
+    title: "Solutions IA",
+    description: "Intégrez la puissance de l'intelligence artificielle directement dans vos processus. Génération de contenu, analyse de données, chatbots intelligents, classification automatique — l'IA au service de votre productivité.",
+    benefits: [
+      "Automatisation intelligente et contextuelle",
+      "Traitement automatique des e-mails et demandes",
+      "Génération de rapports et synthèses",
+      "Chatbots et assistants virtuels personnalisés",
+    ],
+    tools: ["OpenAI / GPT", "Claude (Anthropic)", "LangChain", "Modèles personnalisés"],
+  },
+  {
+    id: "audit",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />`,
+    title: "Conseil & Audit",
+    description: "Avant d'automatiser, il faut comprendre. Nous analysons vos processus actuels en profondeur pour identifier les meilleures opportunités d'automatisation et concevoir une feuille de route sur mesure.",
+    benefits: [
+      "Cartographie complète de vos processus",
+      "Identification des quick wins à fort impact",
+      "Feuille de route d'automatisation priorisée",
+      "Formation de vos équipes aux outils",
+    ],
+    tools: ["Ateliers de découverte", "Process Mining", "Documentation", "Formation"],
+  },
+];
+---
+
+<BaseLayout
+  title="Nos Services — NEXA Automation"
+  description="Découvrez nos services d'automatisation : workflows, intégrations API, solutions IA et conseil. Des solutions sur mesure pour optimiser vos processus métiers."
+>
+  <!-- Hero Services -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-mystique via-white to-arctique/10 py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-emeraude/10 text-emeraude text-sm font-medium mb-6">
+        Nos services
+      </span>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading mb-6">
+        Des solutions d'automatisation <span class="gradient-text">complètes</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-anchor/60 max-w-2xl mx-auto">
+        De l'audit initial au déploiement, nous vous accompagnons à chaque étape de votre transformation digitale.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Detail -->
+  {services.map((service, index) => (
+    <section id={service.id} class={`py-20 sm:py-24 ${index % 2 === 0 ? "bg-white" : "bg-mystique/20"}`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class={`flex flex-col lg:flex-row gap-12 lg:gap-16 items-center ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
+          <!-- Content -->
+          <div class="flex-1">
+            <div class="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Fragment set:html={service.icon} />
+              </svg>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading mb-4">{service.title}</h2>
+            <p class="text-anchor/60 text-lg leading-relaxed mb-8">{service.description}</p>
+
+            <ul class="space-y-3 mb-8">
+              {service.benefits.map((benefit) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-emeraude shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-anchor/70">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="flex flex-wrap gap-2">
+              {service.tools.map((tool) => (
+                <span class="px-3 py-1.5 text-sm font-medium bg-emeraude/10 text-emeraude rounded-full">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class="flex-1 w-full">
+            <div class="bg-gradient-to-br from-mystique to-arctique/20 rounded-3xl p-12 aspect-square flex items-center justify-center">
+              <div class="w-32 h-32 rounded-3xl gradient-bg flex items-center justify-center opacity-80">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <Fragment set:html={service.icon} />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Process -->
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        badge="Notre méthode"
+        title="Un processus en <span class='gradient-text'>4 étapes</span>"
+        subtitle="Une approche structurée pour des résultats concrets et mesurables."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { step: "01", title: "Découverte", desc: "Analyse approfondie de vos processus actuels et identification des opportunités d'automatisation." },
+          { step: "02", title: "Conception", desc: "Design de la solution sur mesure avec validation de l'architecture technique et du workflow." },
+          { step: "03", title: "Développement", desc: "Implémentation, tests rigoureux et intégration avec vos outils existants." },
+          { step: "04", title: "Suivi", desc: "Déploiement, formation de vos équipes et support continu pour optimiser les résultats." },
+        ].map((item) => (
+          <div class="relative text-center group">
+            <div class="text-6xl font-heading gradient-text opacity-20 group-hover:opacity-40 transition-opacity mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-xl font-semibold text-anchor mb-3">{item.title}</h3>
+            <p class="text-anchor/60 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Un projet d'automatisation en tête ?"
+    subtitle="Contactez-nous pour un audit gratuit de vos processus et découvrez le potentiel d'automatisation de votre entreprise."
+    ctaLabel="Demander un audit gratuit"
+    ctaHref="/contact"
+  />
+</BaseLayout>
